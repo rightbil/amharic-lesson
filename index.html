@@ -1,30 +1,31 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="am">
+
 <head>
     <meta charset="UTF-8">
-    <title>Amharic Random Word Game</title>
+    <title>Amharic Random Letter Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <di class="container">
-    <div class="left">
-    <h1>የቃላት ጨዋታ</h1>
-    <button id="startButton">
-        Start Game
-    </button>
+        <div class="left">
+            <h1>ፊደሎቹን አንብቡ</h1>
+            <h3>ከ4ቱ ማን ይወጣል?</h3>
+            <button id="startButton">
+                ጀምር(ሪ) / Start Game
+            </button>
+            <div id="countdown">10</div>
+        </div>
+        <div class="right">
+            <div id="wordArea"></div>
 
-    <button id="stopButton">Stop Game</button>
-    <h3>Seconds left</h3>
-<div id="countdown">5</div>
-</div>
-<div class="right">
-    <div id="wordArea"></div>
+            <div id="selectedWord"></div>
+        </div>
+        </div>
 
-    <div id="selectedWord"></div>
-    </div>
-    </div>
-
-    <script src="script.js"></script>
+        <script src="script.js"></script>
 
 </body>
 
