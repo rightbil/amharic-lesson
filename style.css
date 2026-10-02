@@ -1,116 +1,822 @@
+
+/* =========================================================
+   GENERAL PAGE SETTINGS
+   ========================================================= */
+
+/*
+   This makes width and height calculations easier.
+
+   Without this, padding and borders can sometimes make
+   elements larger than the screen.
+*/
+* {
+    box-sizing: border-box;
+}
+
+
+/*
+   Remove the browser's default margin and padding.
+
+   This allows our application to use the entire screen.
+*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+
+/*
+   Main page settings.
+
+   overflow: hidden prevents the page from creating
+   unwanted horizontal or vertical scrollbars.
+*/
 body {
     text-align: center;
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
+
+    overflow: hidden;
 }
 
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+/*
+   clamp(minimum, preferred, maximum)
+
+   The title automatically changes size depending
+   on the screen.
+
+   28px = smallest size
+   5vw  = size based on screen width
+   40px = largest size
+*/
 h1 {
-    font-size: 60px;
+    font-size: clamp(28px, 5vw, 40px);
+
+    /* Small space around the title */
+    margin: 15px 10px;
 }
 
+
+/* =========================================================
+   START BUTTON
+   ========================================================= */
+
+/*
+   The Start button also changes size depending
+   on the device.
+
+   This prevents a large button from taking up
+   too much space on a phone.
+*/
 #startButton {
-    font-size: 24px;
+    font-size: clamp(18px, 3vw, 24px);
+
     padding: 10px 30px;
+
     cursor: pointer;
-    background-color: lightgreen;
+
+    background-color: green;
+
+    border: none;
+    border-radius: 8px;
 }
-#stopButton{
-    font-size: 24px;
+
+
+/* =========================================================
+   STOP BUTTON
+   ========================================================= */
+
+#stopButton {
+    font-size: clamp(18px, 3vw, 24px);
+
     padding: 10px 30px;
+
     cursor: pointer;
-    background-color: lightcoral
+
+    background-color: lightcoral;
+
+    border: none;
+    border-radius: 8px;
 }
 
 
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
 
-.word {
-    position: absolute;
+/*
+   The page is divided into two sections:
 
-    font-size: 120px;
+       LEFT  = 20%
+       RIGHT = 80%
 
+   The right side is where the four random
+   Amharic letters are displayed.
+*/
+.container {
+    display: grid;
+
+    grid-template-columns: 20% 80%;
+
+    width: 100%;
+
+
+    /*
+       100vh means 100% of the screen height.
+
+       We subtract 120px to leave room for the
+       title and buttons above the game area.
+    */
+    height: calc(100vh - 120px);
+
+
+    /*
+       These prevent the grid from becoming
+       smaller than its content.
+    */
+    min-width: 0;
+    min-height: 0;
+
+
+    /*
+       Small space between the left and right areas.
+    */
+    gap: 10px;
+
+
+    /*
+       Small space around the bottom and sides.
+    */
+    padding: 0 10px 10px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+   ========================================================= */
+
+/*
+   The left side contains things such as:
+
+   - Countdown
+   - Start button
+   - Stop button
+   - Other controls
+*/
+.left {
+    background-color: lightgoldenrodyellow;
+
+    /*
+       Arrange items vertically.
+    */
+    display: flex;
+    flex-direction: column;
+
+    /*
+       Put items at the top.
+    */
+    justify-content: flex-start;
+
+    /*
+       Center items horizontally.
+    */
+    align-items: center;
+
+    padding: 10px;
+
+    /*
+       Prevent the left section from
+       causing the entire page to grow.
+    */
+    min-width: 0;
+    min-height: 0;
+}
+
+
+/* =========================================================
+   RIGHT SIDE — FOUR RANDOM LETTERS
+   ========================================================= */
+
+/*
+   The right side contains the 4 random letters.
+
+   It is divided into:
+
+       ┌──────────┬──────────┐
+       │ Letter 1 │ Letter 2 │
+       ├──────────┼──────────┤
+       │ Letter 3 │ Letter 4 │
+       └──────────┴──────────┘
+*/
+.right {
+    background-color: lightblue;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+       Allows letters to be positioned
+       inside this container.
+    */
+    position: relative;
+
+
+    /*
+       Create the 2 x 2 grid.
+    */
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+
+    /*
+       Prevent the grid from becoming
+       larger than the available screen.
+    */
+    min-width: 0;
+    min-height: 0;
+
+
+    /*
+       Hide anything that accidentally
+       goes outside the game area.
+    */
+    overflow: hidden;
+} 
+
+
+.right {
+    background-color: lightblue;
+
+    /*
+       Use all available width and height.
+    */
+    width: 100%;
+    height: 100%;
+
+    /*
+       Allows elements inside this container
+       to be positioned correctly.
+    */
+    position: relative;
+
+    /*
+       Create the 2 x 2 game grid.
+    */
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    /*
+       Prevent the grid from becoming
+       larger than the available screen.
+    */
+    min-width: 0;
+    min-height: 0;
+
+    /*
+       Keep everything inside the game area.
+    */
+    overflow: hidden;
+
+    /*
+       Remove any extra spacing around the grid.
+    */
+    padding: 0;
+    margin: 0;
+
+    /*
+       Make sure the grid itself uses
+       every available pixel.
+    */
+    box-sizing: border-box;
+}
+
+.randomLetter {
+    /*
+       Make the letter as large as possible
+       while still fitting inside its cell.
+    */
+    font-size: clamp(80px, 15vw, 300px);
+
+    /*
+       Make the letter bold and easy for children to see.
+    */
     font-weight: bold;
 
-    animation: jumpAndRotate 0.8s infinite alternate;
+    /*
+       Keep the letter perfectly centered.
+    */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*
+       Prevent the letter from creating
+       unwanted extra space.
+    */
+    width: 100%;
+    height: 100%;
+
+    /*
+       Make sure long/large characters don't
+       accidentally extend outside the cell.
+    */
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+
+    box-sizing: border-box;
 }
 
+/* =========================================================
+   FOUR RANDOM AMHARIC LETTERS
+   ========================================================= */
+
+/*
+   .word is used for each random letter.
+
+   Example:
+
+       ሀ
+       ለ
+       መ
+       ሰ
+*/
+.word {
+    /*
+       Each letter can be positioned
+       independently.
+    */
+    position: absolute;
+
+
+    /*
+       RESPONSIVE FONT SIZE
+
+       clamp(minimum, preferred, maximum)
+
+       50px  = letter will never be smaller than 50px
+       8vw   = normally grows with the screen width
+       120px = letter will never be larger than 120px
+
+       This is much better than using:
+
+           font-size: 120px;
+
+       because phones and desktop computers have
+       very different screen sizes.
+    */
+    font-size: clamp(50px, 8vw, 120px);
+
+
+    /*
+       Make the Amharic character thick and
+       easy for children to see.
+    */
+    font-weight: bold;
+
+
+    /*
+       Make the letter continuously jump
+       and rotate.
+    */
+    animation: jumpAndRotate 0.8s infinite alternate;
+
+
+    /*
+       Rotate the letter around its center.
+    */
+    transform-origin: center;
+
+
+    /*
+       Keep the Amharic character on one line.
+    */
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RANDOM LETTER ANIMATION
+   ========================================================= */
+
+/*
+   The letter moves slightly up and rotates
+   back and forth.
+
+   This makes the game more fun for children.
+*/
 @keyframes jumpAndRotate {
 
+    /*
+       Starting position:
+       - No vertical movement
+       - Rotate 30 degrees to the left
+    */
     from {
-        transform: translateY(0px) rotate(-30deg);
+        transform:
+            translateY(0px)
+            rotate(-30deg);
     }
 
+
+    /*
+       Ending position:
+       - Move 30px upward
+       - Rotate 30 degrees to the right
+    */
     to {
-        transform: translateY(-40px) rotate(30deg);
+        transform:
+            translateY(-30px)
+            rotate(30deg);
     }
 }
 
-/* Selected word grows */
+
+/* =========================================================
+   SELECTED LETTER
+   ========================================================= */
+
+/*
+   #selectedWord is the BIG letter displayed
+   after the child selects a letter.
+
+   It covers the entire right-side game area.
+*/
+#selectedWord {
+    position: absolute;
+
+
+    /*
+       Put the element at the top-left corner
+       of the right container.
+    */
+    top: 0;
+    left: 0;
+
+
+    /*
+       Make it fill the entire right container.
+    */
+    width: 100%;
+    height: 100%;
+
+
+    /*
+       CENTER THE SELECTED LETTER
+
+       justify-content = horizontal center
+       align-items      = vertical center
+
+       This makes the Amharic letter appear
+       exactly in the center.
+    */
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+
+    /*
+       RESPONSIVE SELECTED LETTER
+
+       vw = viewport width
+       vh = viewport height
+
+       The browser chooses the smaller value.
+
+       This is important because:
+
+       On a phone:
+       → the letter will fit the screen.
+
+       On a laptop:
+       → the letter can become much larger.
+
+       On a landscape phone:
+       → the height prevents the letter
+         from becoming too large.
+    */
+    font-size: min(35vw, 55vh);
+
+
+    /*
+       Make the selected letter bold.
+    */
+    font-weight: bold;
+
+
+    /*
+       Keep the letter from becoming
+       wider than the available area.
+    */
+    max-width: 100%;
+    max-height: 100%;
+
+
+    /*
+       Keep the character vertically compact.
+    */
+    line-height: 1;
+
+
+    /*
+       Center the text.
+    */
+    text-align: center;
+
+
+    /*
+       Prevent the character from creating
+       unwanted scrolling.
+    */
+    overflow: hidden;
+
+
+    /*
+       Make animations happen around
+       the center of the letter.
+    */
+    transform-origin: center;
+}
+
+
+/* =========================================================
+   SELECTED LETTER — GROW ANIMATION
+   ========================================================= */
+
+/*
+   The JavaScript can add the "grow" class
+   when a letter is selected.
+
+   Example:
+
+       <div id="selectedWord" class="grow">ሀ</div>
+*/
 .grow {
     animation: growWord 1.5s ease-out forwards;
 }
 
 
+/*
+   Animation for the selected letter.
+
+   The letter starts small,
+   grows larger,
+   then settles at normal size.
+*/
 @keyframes growWord {
 
+    /*
+       Beginning:
+       very small and invisible.
+    */
     0% {
-        font-size: 40px;
         transform: scale(0.2);
+        opacity: 0;
     }
 
+
+    /*
+       Middle:
+       become slightly larger than normal.
+    */
     50% {
-        font-size: 120px;
         transform: scale(1.2);
+        opacity: 1;
     }
 
+
+    /*
+       End:
+       return to normal size.
+    */
     100% {
-        font-size: 400px;
         transform: scale(1);
+        opacity: 1;
     }
-
-}
-.container {
-    display: grid;
-    grid-template-columns: 10% 85%;
-    width: 100%;
-   
-    height: calc(100vh - 70px);
-
-    min-width: 0;
-    min-height: 0;
-
-    gap: 10px;
-
-    padding: 0 10px 10px;
 }
 
-.left
-{
-    background-color: lightgoldenrodyellow
-}
-.right{
-    background-color: lightblue;
-    
-    box-sizing: border-box;
-      width: 100%;
-    height: 100%; 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    position: relative;
-}
 
+/* =========================================================
+   COUNTDOWN
+   ========================================================= */
+
+/*
+   Example:
+
+       5
+       4
+       3
+       2
+       1
+*/
 #countdown {
-    font-size: 60px;
+
+    /*
+       Responsive countdown size.
+
+       35px = minimum
+       7vw  = grows with screen width
+       60px = maximum
+    */
+    font-size: clamp(35px, 7vw, 60px);
+
     font-weight: bold;
+
     text-align: center;
+
     margin: 20px;
 }
-/*  #wordArea {
-    width: 100%;
-    height: 100%; 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    position: relative;
 
-}  */
+#countdown.warning{
+    color: red;
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+/*
+   This section applies when the screen width
+   is 600px or smaller.
+
+   Most smartphones will use these settings.
+*/
+@media (max-width: 600px) {
+
+    /*
+       Make the title a little smaller.
+    */
+    h1 {
+        margin: 10px 5px;
+    }
+
+
+    /*
+       On a phone:
+
+       LEFT  = 25%
+       RIGHT = 75%
+
+       Give the letter area more space.
+    */
+    .container {
+        grid-template-columns: 25% 75%;
+
+        gap: 5px;
+
+        padding: 0 5px 5px;
+
+
+        /*
+           Reduce the space reserved for
+           the title and buttons.
+        */
+        height: calc(100vh - 100px);
+    }
+
+
+    /*
+       Make the buttons slightly smaller
+       on phones.
+    */
+    #startButton,
+    #stopButton {
+        padding: 8px 18px;
+    }
+
+
+    /*
+       Smaller random letters on phones.
+    */
+    .word {
+        font-size: clamp(40px, 10vw, 80px);
+    }
+
+
+    /*
+       Selected letter is still large,
+       but it must fit the phone screen.
+    */
+    #selectedWord {
+        font-size: min(40vw, 45vh);
+    }
+
+
+    /*
+       Reduce countdown spacing.
+    */
+    #countdown {
+        margin: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+/*
+   This is useful for smaller phones,
+   especially phones with narrow screens.
+*/
+@media (max-width: 400px) {
+
+    /*
+       Give the controls a little more room.
+    */
+    .container {
+        grid-template-columns: 30% 70%;
+    }
+
+
+    /*
+       Make random letters smaller.
+    */
+    .word {
+        font-size: clamp(35px, 10vw, 65px);
+    }
+
+
+    /*
+       Make sure the selected letter
+       fits on a very small screen.
+    */
+    #selectedWord {
+        font-size: min(38vw, 40vh);
+    }
+}
+
+
+/* =========================================================
+   PHONE IN LANDSCAPE MODE
+   ========================================================= */
+
+/*
+   When the phone is turned sideways,
+   the screen becomes very short.
+
+   Example:
+
+       ┌─────────────────────────────┐
+       │                             │
+       │          PHONE              │
+       │         LANDSCAPE           │
+       │                             │
+       └─────────────────────────────┘
+
+   The height becomes more important
+   than the width.
+*/
+@media (max-height: 500px) {
+
+    /*
+       Smaller title when the screen
+       is short.
+    */
+    h1 {
+        font-size: clamp(22px, 4vw, 32px);
+
+        margin: 5px;
+    }
+
+
+    /*
+       Use more of the available height.
+    */
+    .container {
+        height: calc(100vh - 70px);
+    }
+
+
+    /*
+       Limit the selected letter based
+       on both width and height.
+
+       This prevents the letter from
+       being cut off in landscape mode.
+    */
+    #selectedWord {
+        font-size: min(30vw, 55vh);
+    }
+
+
+    /*
+       Smaller random letters in landscape.
+    */
+    .word {
+        font-size: clamp(35px, 8vw, 80px);
+    }
+}
