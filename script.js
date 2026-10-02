@@ -2,7 +2,6 @@ const colors = [
   "red",
   "blue",
   "green",
-  "orange",
   "purple",
   "brown",
   "darkblue",
