@@ -1,54 +1,274 @@
-
 const colors = [
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "brown",
-    "darkblue",
-    "black",
-    "gold"
+  "red",
+  "blue",
+  "green",
+  "orange",
+  "purple",
+  "brown",
+  "darkblue",
+  "black",
+  "gold",
 ];
-const abugida = ["ሀ", "ሁ", "ሂ", "ሃ", "ሄ", "ህ", "ሆ", 
-            "ለ", "ሉ", "ሊ", "ላ", "ሌ", "ል", "ሎ", 
-            "ሐ", "ሑ", "ሒ", "ሓ", "ሔ", "ሕ", "ሖ",
-            "መ", "ሙ", "ሚ", "ማ", "ሜ", "ም", "ሞ", 
-            "ሠ", "ሡ", "ሢ", "ሣ", "ሤ", "ሥ", "ሦ", 
-            "ረ", "ሩ", "ሪ", "ራ", "ሬ", "ር", "ሮ", 
-            "ሰ", "ሱ", "ሲ", "ሳ", "ሴ", "ስ", "ሶ",
-            "ሸ", "ሹ", "ሺ", "ሻ", "ሼ", "ሽ", "ሾ",
-            "ቀ", "ቁ", "ቂ", "ቃ", "ቄ", "ቅ", "ቆ", 
-            "በ", "ቡ", "ቢ", "ባ", "ቤ", "ብ", "ቦ", 
-            "ተ", "ቱ", "ቲ", "ታ", "ቴ", "ት", "ቶ",
-            "ቸ", "ቹ", "ቺ", "ቻ", "ቼ", "ች", "ቾ", 
-            "ነ", "ኑ", "ኒ", "ና", "ኔ", "ን", "ኖ", "ኘ",
-            "ኙ", "ኚ", "ኛ", "ኜ", "ኝ", "ኞ",
-            "አ", "ኡ", "ኢ", "ኣ", "ኤ", "እ", "ኦ",
-            "ከ", "ኩ", "ኪ", "ካ", "ኬ", "ክ", "ኮ",
-            "ኸ", "ኹ", "ኺ", "ኻ", "ኼ", "ኽ", "ኾ",
-            "ወ", "ዉ", "ዊ", "ዋ", "ዌ", "ው", "ዎ",
-            "ዐ", "ዑ", "ዒ", "ዓ", "ዔ", "ዕ", "ዖ", 
-            "ዘ", "ዙ", "ዚ", "ዛ", "ዜ", "ዝ", "ዞ",
-            "ዠ", "ዡ", "ዢ", "ዣ", "ዤ", "ዥ", "ዦ",
-            "የ", "ዩ", "ዪ", "ያ", "ዬ", "ይ", "ዮ", 
-            "ደ", "ዱ", "ዲ", "ዳ", "ዴ", "ድ", "ዶ", 
-            "ጀ", "ጁ", "ጂ", "ጃ", "ጄ", "ጅ", "ጆ", 
-            "ገ", "ጉ", "ጊ", "ጋ", "ጌ", "ግ", "ጎ", 
-            "ጠ", "ጡ", "ጢ", "ጣ", "ጤ", "ጥ", "ጦ", 
-            "ጨ", "ጩ", "ጪ", "ጫ", "ጬ", "ጭ", "ጮ", 
-            "ጰ", "ጱ", "ጲ", "ጳ", "ጴ", "ጵ", "ጶ", 
-            "ጸ", "ጹ", "ጺ", "ጻ", "ጼ", "ጽ", "ጾ", 
-            "ፀ", "ፁ", "ፂ", "ፃ", "ፄ","ፅ", "ፆ", 
-            "ፈ", "ፉ", "ፊ", "ፋ", "ፌ", "ፍ", "ፎ",
-            "ፐ", "ፑ", "ፒ", "ፓ", "ፔ", "ፕ", "ፖ", 
-            "ቨ", "ቩ", "ቪ", "ቫ", "ቬ", "ቭ", "ቮ",
-              "ኧ","ቷ","ቿ", "ቋ","ኋ","ጓ",
-            "ሟ","ቧ","ሷ","ሿ","ካ ኳ","ጧ",
-            "ጯ","ዟ","ዧ","ኗ","ኟ","ሏ"
-            ,"ሯ","ፏ","ዷ","ጇ","ጿ","ጷ"
-            ,"ቯ","ሗ","ዃ"
-]
+const abugida = [
+  "ሀ",
+  "ሁ",
+  "ሂ",
+  "ሃ",
+  "ሄ",
+  "ህ",
+  "ሆ",
+  "ለ",
+  "ሉ",
+  "ሊ",
+  "ላ",
+  "ሌ",
+  "ል",
+  "ሎ",
+  "ሐ",
+  "ሑ",
+  "ሒ",
+  "ሓ",
+  "ሔ",
+  "ሕ",
+  "ሖ",
+  "መ",
+  "ሙ",
+  "ሚ",
+  "ማ",
+  "ሜ",
+  "ም",
+  "ሞ",
+  "ሠ",
+  "ሡ",
+  "ሢ",
+  "ሣ",
+  "ሤ",
+  "ሥ",
+  "ሦ",
+  "ረ",
+  "ሩ",
+  "ሪ",
+  "ራ",
+  "ሬ",
+  "ር",
+  "ሮ",
+  "ሰ",
+  "ሱ",
+  "ሲ",
+  "ሳ",
+  "ሴ",
+  "ስ",
+  "ሶ",
+  "ሸ",
+  "ሹ",
+  "ሺ",
+  "ሻ",
+  "ሼ",
+  "ሽ",
+  "ሾ",
+  "ቀ",
+  "ቁ",
+  "ቂ",
+  "ቃ",
+  "ቄ",
+  "ቅ",
+  "ቆ",
+  "በ",
+  "ቡ",
+  "ቢ",
+  "ባ",
+  "ቤ",
+  "ብ",
+  "ቦ",
+  "ተ",
+  "ቱ",
+  "ቲ",
+  "ታ",
+  "ቴ",
+  "ት",
+  "ቶ",
+  "ቸ",
+  "ቹ",
+  "ቺ",
+  "ቻ",
+  "ቼ",
+  "ች",
+  "ቾ",
+  "ነ",
+  "ኑ",
+  "ኒ",
+  "ና",
+  "ኔ",
+  "ን",
+  "ኖ",
+  "ኘ",
+  "ኙ",
+  "ኚ",
+  "ኛ",
+  "ኜ",
+  "ኝ",
+  "ኞ",
+  "አ",
+  "ኡ",
+  "ኢ",
+  "ኣ",
+  "ኤ",
+  "እ",
+  "ኦ",
+  "ከ",
+  "ኩ",
+  "ኪ",
+  "ካ",
+  "ኬ",
+  "ክ",
+  "ኮ",
+  "ኸ",
+  "ኹ",
+  "ኺ",
+  "ኻ",
+  "ኼ",
+  "ኽ",
+  "ኾ",
+  "ወ",
+  "ዉ",
+  "ዊ",
+  "ዋ",
+  "ዌ",
+  "ው",
+  "ዎ",
+  "ዐ",
+  "ዑ",
+  "ዒ",
+  "ዓ",
+  "ዔ",
+  "ዕ",
+  "ዖ",
+  "ዘ",
+  "ዙ",
+  "ዚ",
+  "ዛ",
+  "ዜ",
+  "ዝ",
+  "ዞ",
+  "ዠ",
+  "ዡ",
+  "ዢ",
+  "ዣ",
+  "ዤ",
+  "ዥ",
+  "ዦ",
+  "የ",
+  "ዩ",
+  "ዪ",
+  "ያ",
+  "ዬ",
+  "ይ",
+  "ዮ",
+  "ደ",
+  "ዱ",
+  "ዲ",
+  "ዳ",
+  "ዴ",
+  "ድ",
+  "ዶ",
+  "ጀ",
+  "ጁ",
+  "ጂ",
+  "ጃ",
+  "ጄ",
+  "ጅ",
+  "ጆ",
+  "ገ",
+  "ጉ",
+  "ጊ",
+  "ጋ",
+  "ጌ",
+  "ግ",
+  "ጎ",
+  "ጠ",
+  "ጡ",
+  "ጢ",
+  "ጣ",
+  "ጤ",
+  "ጥ",
+  "ጦ",
+  "ጨ",
+  "ጩ",
+  "ጪ",
+  "ጫ",
+  "ጬ",
+  "ጭ",
+  "ጮ",
+  "ጰ",
+  "ጱ",
+  "ጲ",
+  "ጳ",
+  "ጴ",
+  "ጵ",
+  "ጶ",
+  "ጸ",
+  "ጹ",
+  "ጺ",
+  "ጻ",
+  "ጼ",
+  "ጽ",
+  "ጾ",
+  "ፀ",
+  "ፁ",
+  "ፂ",
+  "ፃ",
+  "ፄ",
+  "ፅ",
+  "ፆ",
+  "ፈ",
+  "ፉ",
+  "ፊ",
+  "ፋ",
+  "ፌ",
+  "ፍ",
+  "ፎ",
+  "ፐ",
+  "ፑ",
+  "ፒ",
+  "ፓ",
+  "ፔ",
+  "ፕ",
+  "ፖ",
+  "ቨ",
+  "ቩ",
+  "ቪ",
+  "ቫ",
+  "ቬ",
+  "ቭ",
+  "ቮ",
+  "ኧ",
+  "ቷ",
+  "ቿ",
+  "ቋ",
+  "ኋ",
+  "ጓ",
+  "ሟ",
+  "ቧ",
+  "ሷ",
+  "ሿ",
+  "ካ ኳ",
+  "ጧ",
+  "ጯ",
+  "ዟ",
+  "ዧ",
+  "ኗ",
+  "ኟ",
+  "ሏ",
+  "ሯ",
+  "ፏ",
+  "ዷ",
+  "ጇ",
+  "ጿ",
+  "ጷ",
+  "ቯ",
+  "ሗ",
+  "ዃ",
+];
 
 /*
 ==========================================================
@@ -73,14 +293,12 @@ The user must click the button.
 ==========================================================
 */
 
-
 // ==========================================================
 // 1. COLORS
 // ==========================================================
 
 // These colors are randomly assigned to the four letters.
 // Use valid CSS color names.
-
 
 // ==========================================================
 // 2. GET HTML ELEMENTS
@@ -98,7 +316,6 @@ const selectedWord = document.getElementById("selectedWord");
 // Element that displays the countdown (5, 4, 3, 2, 1).
 const countdown = document.getElementById("countdown");
 
-
 // ==========================================================
 // 3. GAME VARIABLES
 // ==========================================================
@@ -113,168 +330,144 @@ let countdownInterval = null;
 // Controls whether a round is currently running.
 let isRunning = false;
 
-
 // ==========================================================
 // 4. START A NEW ROUND
 // ==========================================================
 
 function startRound() {
+  // ------------------------------------------------------
+  // PREVENT ANOTHER ROUND FROM STARTING WHILE ONE IS RUNNING
+  // ------------------------------------------------------
 
-    // ------------------------------------------------------
-    // PREVENT ANOTHER ROUND FROM STARTING WHILE ONE IS RUNNING
-    // ------------------------------------------------------
+  if (isRunning) {
+    return;
+  }
 
-    if (isRunning) {
-        return;
-    }
+  // Mark the game as running.
+  isRunning = true;
 
-    // Mark the game as running.
-    isRunning = true;
+  // ------------------------------------------------------
+  // CLEAR PREVIOUS ROUND DATA
+  // ------------------------------------------------------
 
+  // Empty the previous four-letter array.
+  randomWords = [];
 
-
-    // ------------------------------------------------------
-    // CLEAR PREVIOUS ROUND DATA
-    // ------------------------------------------------------
-
-    // Empty the previous four-letter array.
-    randomWords = [];
-
-    // Remove letters from the previous round.
-    wordArea.innerHTML = "";
-
+  // Remove letters from the previous round.
+  wordArea.innerHTML = "";
 
   // Clear the previously selected letter.
-selectedWord.textContent = "";
+  selectedWord.textContent = "";
 
-// Hide the selected letter while showing four new letters.
-selectedWord.style.display = "none";
+  // Hide the selected letter while showing four new letters.
+  selectedWord.style.display = "none";
 
-// Remove the previous animation.
-selectedWord.classList.remove("grow");
+  // Remove the previous animation.
+  selectedWord.classList.remove("grow");
 
-}
-    // ------------------------------------------------------
-    // PICK FOUR UNIQUE RANDOM LETTERS
-    // ------------------------------------------------------
+  // ------------------------------------------------------
+  // PICK FOUR UNIQUE RANDOM LETTERS
+  // ------------------------------------------------------
 
-    // Continue selecting letters until we have four.
-    while (randomWords.length < 4) {
+  // Continue selecting letters until we have four.
+  while (randomWords.length < 4) {
+    // Generate a random position in the alphabet array.
+    const randomIndex = Math.floor(Math.random() * abugida.length);
 
-        // Generate a random position in the alphabet array.
-        const randomIndex =
-            Math.floor(Math.random() * abugida.length);
+    // Get the letter at that position.
+    const word = abugida[randomIndex];
 
-        // Get the letter at that position.
-        const word = abugida[randomIndex];
-
-        // Make sure the same letter is not selected twice.
-        if (!randomWords.includes(word)) {
-
-            // Add the new letter to our array.
-            randomWords.push(word);
-        }
+    // Make sure the same letter is not selected twice.
+    if (!randomWords.includes(word)) {
+      // Add the new letter to our array.
+      randomWords.push(word);
     }
+  }
 
+  // ------------------------------------------------------
+  // DISPLAY THE FOUR LETTERS
+  // ------------------------------------------------------
 
+  randomWords.forEach(function (word, index) {
+    // Create a new HTML span for each letter.
+    const span = document.createElement("span");
 
-    // ------------------------------------------------------
-    // DISPLAY THE FOUR LETTERS
-    // ------------------------------------------------------
+    // Apply the CSS class called "word".
+    span.className = "word";
 
-    randomWords.forEach(function (word, index) {
+    // Put the Amharic letter inside the span.
+    span.textContent = word;
 
-        // Create a new HTML span for each letter.
-        const span = document.createElement("span");
+    // --------------------------------------------------
+    // POSITION LETTERS IN A 2 x 2 GRID
+    // --------------------------------------------------
 
-        // Apply the CSS class called "word".
-        span.className = "word";
+    // index % 2 gives us column 0 or 1.
+    const column = index % 2;
 
-        // Put the Amharic letter inside the span.
-        span.textContent = word;
+    // Math.floor(index / 2) gives us row 0 or 1.
+    const row = Math.floor(index / 2);
 
+    // Position the letter horizontally.
+    span.style.left = column * 50 + 25 + "%";
 
-        // --------------------------------------------------
-        // POSITION LETTERS IN A 2 x 2 GRID
-        // --------------------------------------------------
+    // Position the letter vertically.
+    span.style.top = row * 50 + 25 + "%";
 
-        // index % 2 gives us column 0 or 1.
-        const column = index % 2;
+    // --------------------------------------------------
+    // ASSIGN A RANDOM COLOR
+    // --------------------------------------------------
 
-        // Math.floor(index / 2) gives us row 0 or 1.
-        const row = Math.floor(index / 2);
+    // Select a random color from the colors array.
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-        // Position the letter horizontally.
-        span.style.left = (column * 50 + 25) + "%";
+    // Apply the selected color.
+    span.style.color = randomColor;
 
-        // Position the letter vertically.
-        span.style.top = (row * 50 + 25) + "%";
+    // --------------------------------------------------
+    // ADD THE LETTER TO THE SCREEN
+    // --------------------------------------------------
 
+    wordArea.appendChild(span);
+  });
 
-        // --------------------------------------------------
-        // ASSIGN A RANDOM COLOR
-        // --------------------------------------------------
+  // ------------------------------------------------------
+  // SHOW THE FOUR LETTERS AND COUNTDOWN
+  // ------------------------------------------------------
 
-        // Select a random color from the colors array.
-        const randomColor =
-            colors[Math.floor(Math.random() * colors.length)];
+  wordArea.style.display = "block";
 
-        // Apply the selected color.
-        span.style.color = randomColor;
+  // Make the countdown visible.
+  countdown.style.display = "block";
 
+  // ------------------------------------------------------
+  // DISABLE THE BUTTON DURING THE COUNTDOWN
+  // ------------------------------------------------------
 
-        // --------------------------------------------------
-        // ADD THE LETTER TO THE SCREEN
-        // --------------------------------------------------
+  // This prevents the user from starting another round
+  // before the current round has finished.
+  startButton.disabled = true;
 
-        wordArea.appendChild(span);
+  // ------------------------------------------------------
+  // START THE 10-SECOND COUNTDOWN
+  // ------------------------------------------------------
 
-    });
+  // Every new round starts at 10 seconds.
+  let seconds = 10;
 
+  // Make sure the countdown starts with the normal color.
+  countdown.classList.remove("warning");
 
-    // ------------------------------------------------------
-    // SHOW THE FOUR LETTERS AND COUNTDOWN
-    // ------------------------------------------------------
+  // Display 10 immediately.
+  countdown.textContent = seconds;
 
-    wordArea.style.display = "block";
-
-    // Make the countdown visible.
-    countdown.style.display = "block";
-
-
-    // ------------------------------------------------------
-    // DISABLE THE BUTTON DURING THE COUNTDOWN
-    // ------------------------------------------------------
-
-    // This prevents the user from starting another round
-    // before the current round has finished.
-    startButton.disabled = true;
-
-
-
-// ------------------------------------------------------
-// START THE 10-SECOND COUNTDOWN
-// ------------------------------------------------------
-
-// Every new round starts at 10 seconds.
-let seconds = 10;
-
-// Make sure the countdown starts with the normal color.
-countdown.classList.remove("warning");
-
-// Display 10 immediately.
-countdown.textContent = seconds;
-
-
-// Run this function every 1 second.
-countdownInterval = setInterval(function () {
-
+  // Run this function every 1 second.
+  countdownInterval = setInterval(function () {
     // Reduce the countdown by one.
     seconds--;
 
     // Display the new number.
     countdown.textContent = seconds;
-
 
     // --------------------------------------------------
     // CHANGE COUNTDOWN COLOR
@@ -291,100 +484,82 @@ countdownInterval = setInterval(function () {
     */
 
     if (seconds <= 3 && seconds > 0) {
-
-        // Add the "warning" CSS class.
-        countdown.classList.add("warning");
-
+      // Add the "warning" CSS class.
+      countdown.classList.add("warning");
     } else {
-
-        // Remove the "warning" class.
-        countdown.classList.remove("warning");
+      // Remove the "warning" class.
+      countdown.classList.remove("warning");
     }
-
 
     // --------------------------------------------------
     // COUNTDOWN FINISHED
     // --------------------------------------------------
 
     if (seconds <= 0) {
+      // Stop the timer.
+      clearInterval(countdownInterval);
 
-        // Stop the timer.
-        clearInterval(countdownInterval);
+      // Reset the timer variable.
+      countdownInterval = null;
 
-        // Reset the timer variable.
-        countdownInterval = null;
-
-        // Select and display one of the four letters.
-        selectRandomLetter();
+      // Select and display one of the four letters.
+      selectRandomLetter();
     }
-
-}, 1000);
-
-
-
+  }, 1000);
+}
 
 // ==========================================================
 // 5. SELECT ONE RANDOM LETTER AFTER THE COUNTDOWN
 // ==========================================================
 
-
 function selectRandomLetter() {
+  // --------------------------------------------------
+  // PICK ONE RANDOM LETTER FROM THE FOUR
+  // --------------------------------------------------
 
-    // --------------------------------------------------
-    // PICK ONE RANDOM LETTER FROM THE FOUR
-    // --------------------------------------------------
+  const randomIndex = Math.floor(Math.random() * randomWords.length);
 
-    const randomIndex =
-        Math.floor(Math.random() * randomWords.length);
+  const wordToShow = randomWords[randomIndex];
 
-    const wordToShow = randomWords[randomIndex];
+  // --------------------------------------------------
+  // HIDE THE COUNTDOWN
+  // --------------------------------------------------
 
+  countdown.style.display = "none";
 
-    // --------------------------------------------------
-    // HIDE THE COUNTDOWN
-    // --------------------------------------------------
+  // --------------------------------------------------
+  // REMOVE THE FOUR ORIGINAL LETTERS
+  // --------------------------------------------------
 
-    countdown.style.display = "none";
+  wordArea.innerHTML = "";
 
+  // --------------------------------------------------
+  // DISPLAY THE SELECTED LETTER
+  // --------------------------------------------------
 
-    // --------------------------------------------------
-    // REMOVE THE FOUR ORIGINAL LETTERS
-    // --------------------------------------------------
+  selectedWord.textContent = wordToShow;
 
-    wordArea.innerHTML = "";
+  // Make sure the selected letter is visible.
+  selectedWord.style.display = "flex";
 
+  // Apply the grow animation.
+  selectedWord.classList.remove("grow");
 
-    // --------------------------------------------------
-    // DISPLAY THE SELECTED LETTER
-    // --------------------------------------------------
+  // Force browser to restart the animation.
+  void selectedWord.offsetWidth;
 
-    selectedWord.textContent = wordToShow;
+  selectedWord.classList.add("grow");
 
-    // Make sure the selected letter is visible.
-    selectedWord.style.display = "flex";
+  // --------------------------------------------------
+  // ROUND COMPLETED
+  // --------------------------------------------------
 
+  isRunning = false;
 
-    // Apply the grow animation.
-    selectedWord.classList.remove("grow");
+  startButton.textContent = "NEXT";
 
-    // Force browser to restart the animation.
-    void selectedWord.offsetWidth;
-
-    selectedWord.classList.add("grow");
-
-
-    // --------------------------------------------------
-    // ROUND COMPLETED
-    // --------------------------------------------------
-
-    isRunning = false;
-
-    startButton.textContent = "NEXT";
-
-    startButton.disabled = false;
-
+  startButton.disabled = false;
 }
-
 
 // ==========================================================
 // 6. START / NEXT BUTTON EVENT
@@ -392,14 +567,12 @@ function selectRandomLetter() {
 
 // Listen for clicks on the same button.
 startButton.addEventListener("click", function () {
+  // Start a new round.
+  // This function will:
+  // - Pick four new letters.
+  // - Display the four letters.
+  // - Reset the countdown to five seconds.
+  // - Select one letter after five seconds.
 
-    // Start a new round.
-    // This function will:
-    // - Pick four new letters.
-    // - Display the four letters.
-    // - Reset the countdown to five seconds.
-    // - Select one letter after five seconds.
-
-    startRound();
-
+  startRound();
 });
