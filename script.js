@@ -1,5 +1,5 @@
 const colors = [
-  "red",
+  /* "red",
   "blue",
   "green",
   "purple",
@@ -7,7 +7,21 @@ const colors = [
   "darkblue",
   "black",
   "gold",
+   */
+    "#0000CC", // Royal Blue
+    "#DC143C", // Crimson Red
+    "#6A0DAD", // Dark Purple
+    "#006400", // Forest Green
+    "#D35400", // Deep Orange
+    "#C00070", // Hot Pink
+    "#000080", // Navy Blue
+    "#00796B", // Dark Teal
+    "#8B4513", // Chocolate
+    "#800000", // Maroon
+    "#4B0082", // Indigo
+    "#8B008B"  // Dark Magenta
 ];
+
 const abugida = [
   "ሀ",
   "ሁ",
@@ -412,6 +426,7 @@ function startRound() {
 
     // Position the letter vertically.
     span.style.top = row * 50 + 25 + "%";
+    
 
     // --------------------------------------------------
     // ASSIGN A RANDOM COLOR
@@ -555,7 +570,7 @@ function selectRandomLetter() {
 
   isRunning = false;
 
-  startButton.textContent = "NEXT";
+  startButton.textContent = "ቀጥል";
 
   startButton.disabled = false;
 }
